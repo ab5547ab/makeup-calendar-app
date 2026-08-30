@@ -9,7 +9,6 @@ class Appointment {
   final String category;
   final double price;
   final String notes;
-  final String clientHistoryNotes; // הערות היסטוריות ורגישויות
 
   Appointment({
     required this.id,
@@ -20,7 +19,6 @@ class Appointment {
     required this.category,
     required this.price,
     required this.notes,
-    this.clientHistoryNotes = '',
   });
 
   Map<String, dynamic> toJson() => {
@@ -32,7 +30,6 @@ class Appointment {
     'category': category,
     'price': price,
     'notes': notes,
-    'clientHistoryNotes': clientHistoryNotes,
   };
 
   factory Appointment.fromJson(Map<String, dynamic> json) => Appointment(
@@ -44,16 +41,15 @@ class Appointment {
     category: json['category'],
     price: (json['price'] as num).toDouble(),
     notes: json['notes'] ?? '',
-    clientHistoryNotes: json['clientHistoryNotes'] ?? '',
   );
 
   static Color getCategoryColor(String category) {
     switch (category) {
-      case 'כלה': return const Color(0xFFD4AF37); // זהב עתיק
-      case 'ערב': return const Color(0xFF4A1525); // שזיף עמוק
-      case 'יומיומי': return const Color(0xFFD8A7B1); // אבן-ורד
-      case 'צילומים': return const Color(0xFF5B7B88); // כחול-אפור
-      case 'קורס': return const Color(0xFF6B7A59); // ירוק זית
+      case 'כלה': return const Color(0xFFD4AF37);
+      case 'ערב': return const Color(0xFF4A1525);
+      case 'יומיומי': return const Color(0xFFD8A7B1);
+      case 'צילומים': return const Color(0xFF5B7B88);
+      case 'קורס': return const Color(0xFF6B7A59);
       default: return const Color(0xFF8D7B68);
     }
   }
